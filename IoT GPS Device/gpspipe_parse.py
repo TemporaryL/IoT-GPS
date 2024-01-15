@@ -4,7 +4,7 @@ command = ["gpspipe", "-w"]
 process = subprocess.Popen(command, stdout=subprocess.PIPE, text=True, shell=False, bufsize=1, universal_newlines=True)
 
 # Send latitude and longitude to Flask API
-api_url = "http://192.168.0.10:80/receive_location"
+api_url = "http://167.99.145.159:5000/receive_location"
 
 while process.poll() is None:
 	readable, _, _ = select.select([process.stdout], [], [], 1.0)
