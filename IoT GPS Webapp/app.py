@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import json, folium
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///O:/Documents/Scripts ~ Tidbits/Python/Flask Websites/IoT GPS/coordinate_log.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./coordinate_log.db'
 db = SQLAlchemy(app)
 
 class Coordinates(db.Model):
@@ -13,7 +13,7 @@ class Coordinates(db.Model):
 	timestamp = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
 
 # Custom marker icon
-icon_image = "Flask Websites\IoT GPS\static\marker-icon.png"
+icon_image = "./static/marker-icon.png"
 icon = folium.CustomIcon(
 	icon_image,
 	icon_size=(25, 41),
@@ -96,4 +96,4 @@ def show_map():
 if __name__ == '__main__':
 	with app.app_context():
 		db.create_all()
-	app.run(host='192.168.0.10', port=80, debug=True)
+	app.run(host='167.99.145.159', port=5000, debug=True)
